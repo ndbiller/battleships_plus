@@ -70,6 +70,11 @@ public class OnMouse : MonoBehaviour
     //
     //}
 
+	void OnMouseDown()
+	{
+		Destroy(this.gameObject);
+	}
+
     void OnMouseEnter()
     {
         if (placementMode)
