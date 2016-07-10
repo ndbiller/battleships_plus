@@ -2,29 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-//Structs
-//public struct Bunker
-//{
-//	public string Name;
-//	public int Length;
-//	public int Hitpoints;
-//	public bool Horizontal;
-//	public int X;
-//	public int Y;
-//	public bool Destroyed;
-//
-//	public Bunker(string name, int length, bool horizontal, int x, int y, bool destroyed)
-//	{
-//		this.Name = name;
-//		this.Length = length;
-//		this.Hitpoints = length;
-//		this.Horizontal = horizontal;
-//		this.X = x;
-//		this.Y = y;
-//		this.Destroyed = destroyed;
-//	}
-//}
-
 public class CreateIslands : MonoBehaviour {
 
 	//Constants
@@ -44,7 +21,6 @@ public class CreateIslands : MonoBehaviour {
 	public List<Bunker> bunkerList = new List<Bunker>();
     int xpos = 0;
     int ypos = 0;
-
 
     // Use this for initialization
     void Start () {
@@ -103,46 +79,46 @@ public class CreateIslands : MonoBehaviour {
 		//HQ
 		Bunker bunker_01 = new Bunker("HQ", 5, true, 0, 0, false);
 		bunker_01 = CreateBunker (tileSet, bunker_01);
-		Debug.Log ("bunker_01.x=" + bunker_01.x + ", bunker_01.y=" + bunker_01.y);
+		//Debug.Log ("bunker_01.x=" + bunker_01.x + ", bunker_01.y=" + bunker_01.y);
 		bunkerList.Add (bunker_01);
 		//Airfields
 		Bunker bunker_02 = new Bunker("Airfield_01", 4, true, 0, 0, false);
 		bunker_02 = CreateBunker (tileSet, bunker_02);
-		Debug.Log ("bunker_02.x=" + bunker_02.x + ", bunker_02.y=" + bunker_02.y);
+		//Debug.Log ("bunker_02.x=" + bunker_02.x + ", bunker_02.y=" + bunker_02.y);
 		bunkerList.Add (bunker_02);
 		Bunker bunker_03 = new Bunker("Airfield_02", 4, true, 0, 0, false);
 		bunker_03 = CreateBunker (tileSet, bunker_03);
-		Debug.Log ("bunker_03.x=" + bunker_03.x + ", bunker_03.y=" + bunker_03.y);
+		//Debug.Log ("bunker_03.x=" + bunker_03.x + ", bunker_03.y=" + bunker_03.y);
 		bunkerList.Add (bunker_03);
 		//Bases
 		Bunker bunker_04 = new Bunker("Base_01", 3, true, 0, 0, false);
 		bunker_04 = CreateBunker (tileSet, bunker_04);
-		Debug.Log ("bunker_04.x=" + bunker_04.x + ", bunker_04.y=" + bunker_04.y);
+		//Debug.Log ("bunker_04.x=" + bunker_04.x + ", bunker_04.y=" + bunker_04.y);
 		bunkerList.Add (bunker_04);
 		Bunker bunker_05 = new Bunker("Base_02", 3, true, 0, 0, false);
 		bunker_05 = CreateBunker (tileSet, bunker_05);
-		Debug.Log ("bunker_05.x=" + bunker_05.x + ", bunker_05.y=" + bunker_05.y);
+		//Debug.Log ("bunker_05.x=" + bunker_05.x + ", bunker_05.y=" + bunker_05.y);
 		bunkerList.Add (bunker_05);
 		Bunker bunker_06 = new Bunker("Base_03", 3, true, 0, 0, false);
 		bunker_06 = CreateBunker (tileSet, bunker_06);
-		Debug.Log ("bunker_06.x=" + bunker_06.x + ", bunker_06.y=" + bunker_06.y);
+		//Debug.Log ("bunker_06.x=" + bunker_06.x + ", bunker_06.y=" + bunker_06.y);
 		bunkerList.Add (bunker_06);
 		//Outposts
 		Bunker bunker_07 = new Bunker("Outpost_01", 2, true, 0, 0, false);
 		bunker_07 = CreateBunker (tileSet, bunker_07);
-		Debug.Log ("bunker_07.x=" + bunker_07.x + ", bunker_07.y=" + bunker_07.y);
+		//Debug.Log ("bunker_07.x=" + bunker_07.x + ", bunker_07.y=" + bunker_07.y);
 		bunkerList.Add (bunker_07);
 		Bunker bunker_08 = new Bunker("Outpost_02", 2, true, 0, 0, false);
 		bunker_08 = CreateBunker (tileSet, bunker_08);
-		Debug.Log ("bunker_08.x=" + bunker_08.x + ", bunker_08.y=" + bunker_08.y);
+		//Debug.Log ("bunker_08.x=" + bunker_08.x + ", bunker_08.y=" + bunker_08.y);
 		bunkerList.Add (bunker_08);
 		Bunker bunker_09 = new Bunker("Outpost_03", 2, true, 0, 0, false);
 		bunker_09 = CreateBunker (tileSet, bunker_09);
-		Debug.Log ("bunker_09.x=" + bunker_09.x + ", bunker_09.y=" + bunker_09.y);
+		//Debug.Log ("bunker_09.x=" + bunker_09.x + ", bunker_09.y=" + bunker_09.y);
 		bunkerList.Add (bunker_09);
 		Bunker bunker_10 = new Bunker("Outpost_04", 2, true, 0, 0, false);
 		bunker_10 = CreateBunker (tileSet, bunker_10);
-		Debug.Log ("bunker_10.x=" + bunker_10.x + ", bunker_10.y=" + bunker_10.y);
+		//Debug.Log ("bunker_10.x=" + bunker_10.x + ", bunker_10.y=" + bunker_10.y);
 		bunkerList.Add (bunker_10);
 
 	}
@@ -164,22 +140,22 @@ public class CreateIslands : MonoBehaviour {
 		while (bunker_set == false) {
 			//random horizontal or vertical
 			float rnd = Random.Range(0,2);
-			Debug.Log ("rnd: " + rnd);
+			//Debug.Log ("rnd: " + rnd);
 			if (rnd == 0) {
 				bunker.horizontal = true;
 			} else {
 				bunker.horizontal = false;
 			}
-			Debug.Log ("bunker.name=" + bunker.name);
-			Debug.Log ("bunker.horizontal: " + bunker.horizontal);
-			Debug.Log ("bunker.length: " + bunker.length);
+			//Debug.Log ("bunker.name=" + bunker.name);
+			//Debug.Log ("bunker.horizontal: " + bunker.horizontal);
+			//Debug.Log ("bunker.length: " + bunker.length);
 
 			//Bunker horizontal
 			if (bunker.horizontal) {
 				//Random x and y coordinates long enough for the bunker
 				bunker.x = Random.Range(0,tileSet.GetUpperBound(0)-bunker.length+2);
 				bunker.y = Random.Range (0, tileSet.GetUpperBound(1));
-				Debug.Log ("bunker.x=" + bunker.x + ", bunker.y=" + bunker.y);
+				//Debug.Log ("bunker.x=" + bunker.x + ", bunker.y=" + bunker.y);
 				bool valid_position = false;
 
 				//check if valid position for the bunker
@@ -248,7 +224,7 @@ public class CreateIslands : MonoBehaviour {
 				//Random x and y coordinates for bunker
 				bunker.x = Random.Range(0,tileSet.GetUpperBound(0));
 				bunker.y = Random.Range (0, tileSet.GetUpperBound(1)-bunker.length+2);
-				Debug.Log ("bunker.x=" + bunker.x + ", bunker.y=" + bunker.y);
+				//Debug.Log ("bunker.x=" + bunker.x + ", bunker.y=" + bunker.y);
 				bool valid_position = false;
 
 				//check if valid position for the bunker
