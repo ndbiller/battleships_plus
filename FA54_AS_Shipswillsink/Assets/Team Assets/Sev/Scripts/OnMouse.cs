@@ -72,7 +72,7 @@ public class OnMouse : MonoBehaviour
 
 	void OnMouseDown()
 	{
-		Destroy(this.gameObject);
+		//Destroy(this.gameObject);
 	}
 
     void OnMouseEnter()
