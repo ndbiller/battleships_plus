@@ -8,6 +8,8 @@ public class CubePosition : MonoBehaviour {
 	public int cubeYcord = 0;
 	public GameObject prefabBunker;
 	public bool bunkerPosition = false;
+	public string bunkerName;
+	public bool bunkerSegmentDestroyed = false;
 
 	// Use this for initialization
 	void Start () {
