@@ -3098,14 +3098,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 460512, guid: dbbd3d47430be1144af1cde67e453d42, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 8119224, guid: dbbd3d47430be1144af1cde67e453d42, type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8119224, guid: dbbd3d47430be1144af1cde67e453d42, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbbd3d47430be1144af1cde67e453d42, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &123981657
@@ -7625,62 +7620,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 411982, guid: 9e7f66e38d5768b43b456af208769000, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6598528, guid: 9e7f66e38d5768b43b456af208769000, type: 2}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11499496, guid: 9e7f66e38d5768b43b456af208769000, type: 2}
+    - target: {fileID: 11483952, guid: 9e7f66e38d5768b43b456af208769000, type: 2}
+      propertyPath: cam1
+      value: 
+      objectReference: {fileID: 1024711541}
+    - target: {fileID: 11483952, guid: 9e7f66e38d5768b43b456af208769000, type: 2}
+      propertyPath: cam2
+      value: 
+      objectReference: {fileID: 2041190561}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e7f66e38d5768b43b456af208769000, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &313919787 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 141516, guid: 9e7f66e38d5768b43b456af208769000, type: 2}
-  m_PrefabInternal: {fileID: 313919786}
---- !u!114 &313919788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 313919787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f5ce98085ea86f498340ea8a5dc41e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabGameCube: {fileID: 152146, guid: ff58ec0a4086aed4ca1292b65ba30543, type: 2}
-  shipList: []
---- !u!114 &313919789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 313919787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4021371fafebc1b4baaf524828b5c125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabIslandSand: {fileID: 152362, guid: 78858f8de032c074ab64776062a0b22f, type: 2}
-  prefabIslandDirt: {fileID: 152362, guid: cd7105e9f3ddf2544b2124e60a174c8e, type: 2}
-  prefabIslandStone: {fileID: 152362, guid: a6ad8c8d399a42d4392584c3a8f4d93c, type: 2}
-  prefabIslandGrass: {fileID: 152362, guid: 4cfb4bc8200d343489dfe482791dac71, type: 2}
-  bunkerList: []
---- !u!114 &313919794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 313919787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80ae8cd7dc3a0540b64c6000129dc62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam1: {fileID: 1024711541}
-  cam2: {fileID: 2041190561}
 --- !u!1001 &314793636
 Prefab:
   m_ObjectHideFlags: 0
@@ -8388,7 +8340,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 449342, guid: 0a4b65f720688b04bb96f46f702f5a9c, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 121738, guid: 0a4b65f720688b04bb96f46f702f5a9c, type: 2}
       propertyPath: m_Name
@@ -28602,11 +28554,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 405150, guid: 93e5f8fb599e07e42b4974bc9833d169, type: 2}
       propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 118618, guid: 93e5f8fb599e07e42b4974bc9833d169, type: 2}
-      propertyPath: m_Name
-      value: Main Camera
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93e5f8fb599e07e42b4974bc9833d169, type: 2}
@@ -40597,7 +40545,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 488506, guid: 067fca377e22f424e98f0c6a969d16da, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 067fca377e22f424e98f0c6a969d16da, type: 2}

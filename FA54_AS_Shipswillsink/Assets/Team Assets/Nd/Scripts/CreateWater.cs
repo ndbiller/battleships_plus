@@ -86,7 +86,7 @@ public class CreateWater : MonoBehaviour {
 			if (rnd == 0) {
 				ship.horizontal = true;
 			} else {
-				ship.horizontal = true;
+				ship.horizontal = false;
 			}
 			Debug.Log ("ship.name=" + ship.name);
 			Debug.Log ("ship.horizontal: " + ship.horizontal);
@@ -110,37 +110,37 @@ public class CreateWater : MonoBehaviour {
 						trigger++;
 					}
 				}
-//				//check left of the bunker
-//				if (bunker.x + bunker.length - 1 < 9){
-//					if (tileSet[bunker.x + bunker.length, bunker.y].GetComponent<CubePosition>().bunkerPosition == true)
-//					{
-//						trigger++;
-//					}
-//				}
-//				//check right of the bunker
-//				if (bunker.x > 0){
-//					if (tileSet[bunker.x - 1, bunker.y].GetComponent<CubePosition>().bunkerPosition == true){
-//						trigger++;
-//					}
-//				}
-//				//check above the bunker
-//				if (bunker.y > 0){
-//					for (int i = 0; i < bunker.length; i++){
-//						if (tileSet[bunker.x + i, bunker.y - 1].GetComponent<CubePosition>().bunkerPosition == true)
-//						{
-//							trigger++;
-//						}
-//					}
-//				}
-//				//check below the bunker
-//				if (bunker.y < 9){
-//					for (int i = 0; i < bunker.length; i++){
-//						if (tileSet[bunker.x + i, bunker.y + 1].GetComponent<CubePosition>().bunkerPosition == true)
-//						{
-//							trigger++;
-//						}
-//					}
-//				}
+				//check left of the bunker
+				if (ship.x + ship.length - 1 < 9){
+					if (grid[ship.x + ship.length, ship.y].GetComponent<WaterPosition>().shipPosition == true)
+					{
+						trigger++;
+					}
+				}
+				//check right of the bunker
+				if (ship.x > 0){
+					if (grid[ship.x - 1, ship.y].GetComponent<WaterPosition>().shipPosition == true){
+						trigger++;
+					}
+				}
+				//check above the bunker
+				if (ship.y > 0){
+					for (int i = 0; i < ship.length; i++){
+						if (grid[ship.x + i, ship.y - 1].GetComponent<WaterPosition>().shipPosition == true)
+						{
+							trigger++;
+						}
+					}
+				}
+				//check below the bunker
+				if (ship.y < 9){
+					for (int i = 0; i < ship.length; i++){
+						if (grid[ship.x + i, ship.y + 1].GetComponent<WaterPosition>().shipPosition == true)
+						{
+							trigger++;
+						}
+					}
+				}
 				//decide if position is valid or not
 				if (trigger > 0)
 				{
@@ -155,7 +155,7 @@ public class CreateWater : MonoBehaviour {
 					//Set Bunker from this position over bunker.length along x-axis
 					for (int x = 0; x < ship.length; x++) {
 						grid [ship.x + x, ship.y].GetComponent<WaterPosition> ().shipPosition = true;
-						grid [ship.x + x, ship.y].GetComponent<WaterPosition> ().bunkerName = ship.name;
+						grid [ship.x + x, ship.y].GetComponent<WaterPosition> ().shipName = ship.name;
 					}
 
 					bunker_set = true;
@@ -179,34 +179,34 @@ public class CreateWater : MonoBehaviour {
 						trigger++;
 					}
 				}
-//				//check left of the bunker
-//				if (bunker.x < 9){
-//					for (int i = 0; i < bunker.length; i++) {
-//						if (tileSet [bunker.x + 1, bunker.y + i].GetComponent<CubePosition> ().bunkerPosition == true) {
-//							trigger++;
-//						}
-//					}
-//				}
-//				//check right of the bunker
-//				if (bunker.x > 0){
-//					for (int i = 0; i < bunker.length; i++) {
-//						if (tileSet [bunker.x - 1, bunker.y + i].GetComponent<CubePosition> ().bunkerPosition == true) {
-//							trigger++;
-//						}
-//					}
-//				}
-//				//check above the bunker
-//				if (bunker.y > 0){
-//					if (tileSet [bunker.x, bunker.y - 1].GetComponent<CubePosition> ().bunkerPosition == true) {
-//						trigger++;
-//					}
-//				}
-//				//check below the bunker
-//				if (bunker.y + bunker.length - 1 < 9){
-//					if (tileSet [bunker.x, bunker.y + bunker.length].GetComponent<CubePosition> ().bunkerPosition == true) {
-//						trigger++;
-//					}
-//				}
+				//check left of the bunker
+				if (ship.x < 9){
+					for (int i = 0; i < ship.length; i++) {
+						if (grid [ship.x + 1, ship.y + i].GetComponent<WaterPosition> ().shipPosition == true) {
+							trigger++;
+						}
+					}
+				}
+				//check right of the bunker
+				if (ship.x > 0){
+					for (int i = 0; i < ship.length; i++) {
+						if (grid [ship.x - 1, ship.y + i].GetComponent<WaterPosition> ().shipPosition == true) {
+							trigger++;
+						}
+					}
+				}
+				//check above the bunker
+				if (ship.y > 0){
+					if (grid [ship.x, ship.y - 1].GetComponent<WaterPosition> ().shipPosition == true) {
+						trigger++;
+					}
+				}
+				//check below the bunker
+				if (ship.y + ship.length - 1 < 9){
+					if (grid [ship.x, ship.y + ship.length].GetComponent<WaterPosition> ().shipPosition == true) {
+						trigger++;
+					}
+				}
 				//decide if position is valid or not
 				if (trigger > 0)
 				{
@@ -221,7 +221,7 @@ public class CreateWater : MonoBehaviour {
 					//Set Bunker from this position over bunker.length along y-axis
 					for (int y = 0; y < ship.length; y++) {
 						grid [ship.x, ship.y + y].GetComponent<WaterPosition> ().shipPosition = true;
-						grid [ship.x, ship.y + y].GetComponent<WaterPosition> ().bunkerName = ship.name;
+						grid [ship.x, ship.y + y].GetComponent<WaterPosition> ().shipName = ship.name;
 					}
 
 					bunker_set = true;

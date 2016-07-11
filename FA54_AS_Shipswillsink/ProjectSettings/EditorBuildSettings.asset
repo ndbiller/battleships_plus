@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Team Assets/Scenes/ShipsWillSink_03.unity
   - enabled: 1
     path: Assets/Team Assets/Scenes/GameWon.unity
+  - enabled: 1
+    path: Assets/Team Assets/Scenes/GameLost.unity

@@ -54,7 +54,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &417424
 Transform:
   m_ObjectHideFlags: 1
@@ -197,15 +197,18 @@ MonoBehaviour:
   cubeXcord: 0
   cubeYcord: 0
   prefabShip: {fileID: 144828}
-  bunkerPosition: 0
+  prefabSmoke: {fileID: 175074}
+  shipPosition: 0
   bunkerName: 
   bunkerSegmentDestroyed: 0
   hasBeenShotAt: 0
   mouseOver: 0
+  shotFired: 0
   defaultColor: {r: 0, g: 0.5568628, b: 0.95, a: 0.828}
   hoverColor: {r: 0.043137256, g: 0.5568628, b: 0.09019608, a: 0.827451}
   nopeColor: {r: 1, g: 0, b: 0, a: 0.828}
   hitColor: {r: 0, g: 0.166, b: 0.166, a: 0.828}
+  list: []
 --- !u!114 &11454466
 MonoBehaviour:
   m_ObjectHideFlags: 1

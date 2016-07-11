@@ -1,0 +1,6 @@
+Base path: C:/Program Files/Unity/Editor/Data
+Cmd: getPlatforms
+Cmd: compileSnippet
+  api=8 type=0 insize=1706 outsize=1457 kw=SOFTPARTICLES_ON pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=1
+Cmd: compileSnippet
+  api=8 type=1 insize=1706 outsize=577 kw=SOFTPARTICLES_OFF pd=UNITY_NO_LINEAR_COLORSPACE UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 ok=1

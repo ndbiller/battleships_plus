@@ -31,56 +31,63 @@ public class CubePosition : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
-		//this makes sure the color change is only requested once
-		mouseOver = true;
-
-		if (hasBeenShotAt || bunkerSegmentDestroyed) {
-			//change the cube colors, while hovering
-			//GetComponent<Renderer> ().material.SetColor ("_Color", nopeColor);
-		} else {
-			GetComponent<Renderer> ().material.SetColor ("_Color", hoverColor);
+		if (GameObject.Find ("GameControllerNd").GetComponent<GameStates> ().playerTurn) {
+			//this makes sure the color change is only requested once
+			mouseOver = true;
+				
+			if (hasBeenShotAt || bunkerSegmentDestroyed) {
+				//change the cube colors, while hovering
+				//GetComponent<Renderer> ().material.SetColor ("_Color", nopeColor);
+			} else {
+				GetComponent<Renderer> ().material.SetColor ("_Color", hoverColor);
+			}
 		}
 	}
 
 	void OnMouseDown()
 	{
-		if (!hasBeenShotAt) {
-			shotFired = true;
-			defaultColor = hitColor;
-			GetComponent<Renderer>().material.SetColor("_Color", defaultColor);
+		if (GameObject.Find ("GameControllerNd").GetComponent<GameStates> ().playerTurn) {
+			if (!hasBeenShotAt) {
+				shotFired = true;
+				defaultColor = hitColor;
+				GetComponent<Renderer> ().material.SetColor ("_Color", defaultColor);
 
-			//Check if bunker is on here
-			Debug.Log("bunkerPosition: " + this.gameObject.GetComponent<CubePosition>().bunkerPosition);
-			if (this.gameObject.GetComponent<CubePosition> ().bunkerPosition) {
-				Debug.Log ("bunkerName: " + this.gameObject.GetComponent<CubePosition> ().bunkerName);
-				bunkerSegmentDestroyed = true;
-				string hitName = this.gameObject.GetComponent<CubePosition> ().bunkerName;
-				list = GameObject.Find("GameController").GetComponent<CreateIslands>().bunkerList;
-				int index = list.FindIndex (d => d.name == hitName);
-				Debug.Log ("index: " + index);
-				Debug.Log ("name: " + list[index].name);
-				Debug.Log ("length: " + list[index].length);
-				list [index].hitpoints = list [index].hitpoints - 1;
-				Debug.Log ("hitpoints: " + list[index].hitpoints);
-				if (list[index].hitpoints == 0){
-					list [index].destroyed = true;
-					list.RemoveAt (index);
+				//Check if bunker is on here
+				Debug.Log ("bunkerPosition: " + this.gameObject.GetComponent<CubePosition> ().bunkerPosition);
+				if (this.gameObject.GetComponent<CubePosition> ().bunkerPosition) {
+					Debug.Log ("bunkerName: " + this.gameObject.GetComponent<CubePosition> ().bunkerName);
+					bunkerSegmentDestroyed = true;
+					string hitName = this.gameObject.GetComponent<CubePosition> ().bunkerName;
+					list = GameObject.Find ("GameControllerNd").GetComponent<CreateIslands> ().bunkerList;
+					int index = list.FindIndex (d => d.name == hitName);
+					Debug.Log ("index: " + index);
+					Debug.Log ("name: " + list [index].name);
+					Debug.Log ("length: " + list [index].length);
+					list [index].hitpoints = list [index].hitpoints - 1;
+					Debug.Log ("hitpoints: " + list [index].hitpoints);
+					if (list [index].hitpoints == 0) {
+						list [index].destroyed = true;
+						list.RemoveAt (index);
+					}
+					if (list.Count == 0) {
+						SceneManager.LoadScene ("GameWon");
+					}
 				}
-				if (list.Count == 0) {
-					SceneManager.LoadScene ("GameWon");
-				}
+				hasBeenShotAt = true;
+				GameObject.Find ("GameControllerNd").GetComponent<GameStates> ().ChangeTurn ();
 			}
-			hasBeenShotAt = true;
 		}
 	}
 
 	void OnMouseExit()
 	{
-		//this makes sure the color change is only requested once
-		mouseOver = false;
-
-		//change the cube colors, while hovering
-		GetComponent<Renderer>().material.SetColor("_Color", defaultColor);
+		if (GameObject.Find ("GameControllerNd").GetComponent<GameStates> ().playerTurn) {
+			//this makes sure the color change is only requested once
+			mouseOver = false;
+				
+			//change the cube colors, while hovering
+			GetComponent<Renderer> ().material.SetColor ("_Color", defaultColor);
+		}
 	}
 	
 	// Update is called once per frame
