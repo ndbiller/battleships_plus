@@ -17,7 +17,7 @@ public class CreateCubes : MonoBehaviour {
  
 
 
-    // Use this for initialization
+    // Use this for initializations
     void Start () {
 
         for(xpos = 0; xpos < numOfCubesX; xpos++ )

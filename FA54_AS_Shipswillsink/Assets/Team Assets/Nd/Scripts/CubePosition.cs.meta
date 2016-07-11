@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: 7ff6f9d8ff67b884892b18cb8a8c0840
-timeCreated: 1468005040
+timeCreated: 1468208741
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - prefabBunker: {fileID: 115720, guid: 4e0bfaca07fa41447ac6da47cfe9d8fb, type: 2}
+  - prefabSmoke: {fileID: 113412, guid: 5c45aceba96501d4b9331dd051c000b1, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

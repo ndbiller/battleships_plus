@@ -21,10 +21,10 @@ public class ClickText : MonoBehaviour {
 	void OnMouseExit () {
 		GetComponent<Transform> ().localScale = new Vector3 (1,1,1);
 		GetComponent<TextMesh> ().color = originalColor;
-		if (this.name == "GameStartOption2" && option2Clicked) {
-			GetComponent<TextMesh> ().text = originalText;
-			option2Clicked = false;
-		}
+//		if (this.name == "GameStartOption2" && option2Clicked) {
+//			GetComponent<TextMesh> ().text = originalText;
+//			option2Clicked = false;
+//		}
 	}
 
 	void OnMouseDown () {
@@ -36,11 +36,16 @@ public class ClickText : MonoBehaviour {
 		}
 		if (this.name == "GameStartOption2") {
 			//GetComponent<TextMesh> ().color = selectedColor;
-			print("Not yet implemented.");
-			originalText = GetComponent<TextMesh> ().text;
-			GetComponent<TextMesh> ().text = "Not yet implemented.";
+			//print("Not yet fully implemented.");
+			//originalText = GetComponent<TextMesh> ().text;
+			originalColor = hoverColor;
+			GetComponent<TextMesh> ().text = "Not yet fully implemented.";
 			option2Clicked = true;
+			StartCoroutine(WaitForSomeTime(5));
 		}
+		option1.GetComponent<BoxCollider> ().enabled = false;
+		option2.GetComponent<BoxCollider> ().enabled = false;
+		GetComponent<Transform> ().localScale = new Vector3 (1,1,1);
 	}
 
 	//sideRate = Speed of movement (default: none), 
@@ -57,6 +62,11 @@ public class ClickText : MonoBehaviour {
 			MoveText (option1, 2.5f);
 			MoveText (option2, 3f, 1);
 		}
+		if(option2Clicked){
+			MoveText(title, 3.5f);
+			MoveText (option1, 2.5f, 1);
+			MoveText (option2, 3f);
+		}
 	}
 
 	void Start() {
@@ -67,6 +77,9 @@ public class ClickText : MonoBehaviour {
 		//print(Time.time);
 		yield return new WaitForSeconds(time);
 		//print(Time.time);
-		SceneManager.LoadScene ("ShipsWillSink_02");
+		if (option1Clicked)
+			SceneManager.LoadScene ("ShipsWillSink_02");
+		if (option2Clicked)
+			SceneManager.LoadScene ("ShipsWillSink_03");
 	}
 }

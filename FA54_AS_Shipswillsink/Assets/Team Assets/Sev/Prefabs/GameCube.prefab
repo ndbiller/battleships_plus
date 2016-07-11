@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2346452}
   - 114: {fileID: 11403172}
   - 114: {fileID: 11454466}
+  - 114: {fileID: 11465178}
   m_Layer: 0
   m_Name: GameCube
   m_TagString: Untagged
@@ -92,10 +93,15 @@ MonoBehaviour:
   cubeYcord: 0
   placementMode: 1
   isAvailable: 1
+  isShipped: 0
   mouseHover: 0
   defaultColor: {r: 0.05011895, g: 0.58176374, b: 0.75735295, a: 0.759}
   hoverColor: {r: 0.15625, g: 0.625, b: 0.2952586, a: 1}
   nopeColor: {r: 1, g: 0, b: 0, a: 0.497}
+  mouseDownColor: {r: 96, g: 96, b: 96, a: 240}
+  firstClick: 0
+  setDirection: 0
+  badDirections: 
 --- !u!114 &11454466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +120,17 @@ MonoBehaviour:
   waveSpeedX: 0.08
   waveDirectionX: 0.04
   waveWaitSpeed: 0.8
+--- !u!114 &11465178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 313cc4fdb8d9ce14fa2d32e69b886950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

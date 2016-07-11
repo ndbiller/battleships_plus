@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class OnMouse : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class OnMouse : MonoBehaviour
 
     //checks if the cube this script is attached to is available for ship placement
     public bool isAvailable = true;
+    public bool isShipped = false;
 
     //to check if the player is hovering over this cube
     public bool mouseHover = false;
@@ -24,6 +27,7 @@ public class OnMouse : MonoBehaviour
     public Color defaultColor = new Vector4(13, 148, 193, 194); //blue
     public Color hoverColor = new Vector4(40, 159, 75, 240); //green
     public Color nopeColor = new Vector4(255, 0, 0, 127); //red
+    public Color mouseDownColor = new Vector4(96, 96, 96, 240); //gray
 
     //Variables to store local information
     int currentX = 0;
@@ -31,11 +35,20 @@ public class OnMouse : MonoBehaviour
     int currentDirectionLength = 0;
     int currentShipLength = 0;
     int shipPos = 0;
-    int badDirection = -1;
+    //int badDirection = -1;
     bool currentDirAvailable = true;
+    public bool firstClick = false;
+    bool secondClick = false;
+
+    int coloringDirection = 0;
+
+
+    public int setDirection = 0;
 
     Color origColor;
     Color currentColor;
+
+    public List<int> badDirections = new List<int>();
 
     //start is only called once at the beginning and then never again
     void Start()
@@ -51,47 +64,48 @@ public class OnMouse : MonoBehaviour
     //usually most of the action happens in Update(), but the mouse hover functions have built in update cycles, so we don't use update
     void Update()
     {
-
+        if(isShipped)
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.yellow;
+        }
+        else if (!isAvailable)
+        {
+            gameObject.GetComponent<Renderer>().material.color = Color.gray;
+        }
     }
 
-
-    //void OnMouseUp()
-    //{
-    //    if (gameObject.GetComponent<Renderer>().material.color == defaultColor)
-    //    {
-    //        Debug.Log("IfdefCol " + gameObject.GetComponent<Renderer>().material.color);
-    //        gameObject.GetComponent<Renderer>().material.color = Color.red;
-    //    }
-    //    else if (gameObject.GetComponent<Renderer>().material.color == Color.red)
-    //    {
-    //        gameObject.GetComponent<Renderer>().material.color = defaultColor;
-    //        Debug.Log("test1 " + gameObject.GetComponent<Renderer>().material.color);
-    //    }
-    //
-    //}
-
-	void OnMouseDown()
-	{
-		//Destroy(this.gameObject);
-	}
 
     void OnMouseEnter()
     {
         if (placementMode)
         {
+            mouseHover = true;
+            GameObject.Find("GameController").GetComponent<ShipPlacement>().lastHovered = GameObject.Find("GameController").GetComponent<ShipPlacement>().currentlyHovered;
+            GameObject.Find("GameController").GetComponent<ShipPlacement>().currentlyHovered = this.gameObject;
 
-            currentShipLength = GameObject.Find("GameController").GetComponent<CreateCubes>().shipLength;
-            //here the function is called to change the cube colors, while hovering
-            changeBlockCol(currentShipLength, cubeXcord, cubeYcord, hoverColor, nopeColor);
 
-            //this makes sure the color change is only requested once
+            //makes sure the colors are only changed if the player has not clicked
+            if (GameObject.Find("GameController").GetComponent<ShipPlacement>().globalFirstClick == false)
+            {
+                
+                currentShipLength = GameObject.Find("GameController").GetComponent<CreateCubes>().shipLength;
+                //here the function is called to change the cube colors, while hovering
+                changeBlockCol(currentShipLength, cubeXcord, cubeYcord, hoverColor, nopeColor);
+            }
+            else if(GameObject.Find("GameController").GetComponent<ShipPlacement>().theChosenOne == this.gameObject)
+            {
+                //placeholder in case I want to change the color of the cube i clicked on, when i hover over it again
+                GameObject.Find("GameController").GetComponent<ShipPlacement>().theChosenOne.GetComponent<OnMouse>().setThisBlocksColors();
+
+            }
+            else
+            {
+                GameObject.Find("GameController").GetComponent<ShipPlacement>().theChosenOne.GetComponent<OnMouse>().setThisBlocksColors();
+            }
+            //this makes sure the color change is only requested once per entry
             placementMode = false;
 
-
-            //gameObject.GetComponent<Renderer>().material.color = Color.blue;
-            //GameObject.Find("GameController").GetComponent<CreateCubes>().cubeSet[cubeXcord, cubeYcord + 1].GetComponent<Renderer>().material.color = Color.blue;
-            //GameObject.Find("GameController").GetComponent<CreateCubes>().cubeSet[cubeXcord, cubeYcord + 2].GetComponent<Renderer>().material.color = Color.blue;
-
+            //Debug.Log(Input.mousePosition);
         }
     }
 
@@ -100,13 +114,32 @@ public class OnMouse : MonoBehaviour
         if (!placementMode)
         {
 
-            currentShipLength = GameObject.Find("GameController").GetComponent<CreateCubes>().shipLength;
+            if (GameObject.Find("GameController").GetComponent<ShipPlacement>().globalFirstClick == false ||
+                GameObject.Find("GameController").GetComponent<ShipPlacement>().theChosenOne == this.gameObject)
+            {
+                if (!firstClick)
+                {
+                    mouseHover = false;
+                    currentShipLength = GameObject.Find("GameController").GetComponent<CreateCubes>().shipLength;
 
-            //the same function is called to change the colors back to the original, when not hovering over the cube anymore
-            changeBlockCol(currentShipLength, cubeXcord, cubeYcord, defaultColor, defaultColor);
+                    changeBlockCol(currentShipLength, cubeXcord, cubeYcord, defaultColor, defaultColor);
 
-            //resetting 
-            badDirection = -1;
+                }
+                //the same function is called to change the colors back to the original, when not hovering over the cube anymore
+
+                //resetting bad directions
+                badDirections.Clear();
+            }
+            else
+            {
+                GameObject.Find("GameController").GetComponent<ShipPlacement>().theChosenOne.GetComponent<OnMouse>().resetThisBlocksColors();
+                badDirections.Clear();
+
+            }
+
+
+            badDirections.Clear();
+
             //makes sure this is also only called once per exit
             placementMode = true;
 
@@ -117,73 +150,144 @@ public class OnMouse : MonoBehaviour
     }
 
 
-    //This function generates the hover effect
+    void OnMouseUp()
+    {
+        if (mouseHover && isAvailable)
+        {
+            
+            if (!GameObject.Find("GameController").GetComponent<ShipPlacement>().globalFirstClick || firstClick)
+            {
+                changeBlockCol(currentShipLength, cubeXcord, cubeYcord, defaultColor, defaultColor);
+                if (firstClick)
+                {
+                    //mouseHover = false;
+                    firstClick = false;
+                    //Cursor.visible = true;
+
+                }
+                else
+                {
+                    //mouseHover = true;
+                    firstClick = true;
+                    //Cursor.visible = false;
+                    GameObject.Find("GameController").GetComponent<ShipPlacement>().theChosenOne = this.gameObject;
+                    GameObject.Find("GameController").GetComponent<ShipPlacement>().currentlyHovered = this.gameObject;
+                    GameObject.Find("GameController").GetComponent<ShipPlacement>().lastHovered = this.gameObject;
+
+                }
+                GameObject.Find("GameController").GetComponent<ShipPlacement>().globalFirstClick = firstClick;
+
+
+            }
+
+            
+
+        }
+    }
+
+    //call the color change from a different script
+    public void setThisBlocksColors()
+    {
+        badDirections.Clear();
+        changeBlockCol(currentShipLength, cubeXcord, cubeYcord, hoverColor, nopeColor);
+    }
+    public void resetThisBlocksColors()
+    {
+        //badDirections.Clear();
+        changeBlockCol(currentShipLength, cubeXcord, cubeYcord, defaultColor, defaultColor);
+    }
+
+
+
+    //this function will be called to set which direction away from the currently hovered cube should be colored
+    void setCurrentDirection(int currentDirection, int setXpos, int setYpos, int currentShipBlock)
+    {
+        switch (currentDirection)
+        {
+            //create Y+ direction (South)
+            case 0:
+                currentX = setXpos;
+                currentY = setYpos + currentShipBlock;
+                currentDirectionLength = CreateCubes.numOfCubesY;
+                shipPos = setYpos;
+                break;
+            //create Y- direction (North)
+            case 1:
+                currentX = setXpos;
+                currentY = setYpos - currentShipBlock;
+                currentDirectionLength = CreateCubes.numOfCubesY;
+                shipPos = setYpos;
+                break;
+
+            //create X+ direction (West)
+            case 2:
+                currentX = setXpos + currentShipBlock;
+                currentY = setYpos;
+                currentDirectionLength = CreateCubes.numOfCubesX;
+                shipPos = setXpos;
+                break;
+
+            //create X- direction (East)
+            case 3:
+                currentX = setXpos - currentShipBlock;
+                currentY = setYpos;
+                currentDirectionLength = CreateCubes.numOfCubesX;
+                shipPos = setXpos;
+                break;
+
+        }
+    }
+
+    //This function changes the color of blocks 
     void changeBlockCol(int shipLength, int myXpos, int myYpos, Color hoverCol, Color nopeCol)
     {
 
-        if (isAvailable)
-        {
-            gameObject.GetComponent<Renderer>().material.color = hoverCol;
-        }
-        else
-        {
-            gameObject.GetComponent<Renderer>().material.color = nopeCol;
-        }
 
         for (int i = 0; i < shipLength; i++)
         {
-            //Debug.Log("X:" + myXpos + " Y:" + myYpos);
-            //Debug.Log(i);
 
             for (int a = 0; a < 4; a++)
             {
 
-                //Debug.Log("Case: " + a);
-                switch (a)
+
+                if (firstClick)
                 {
-                    //create Y+ direction
-                    case 0:
-                        currentX = myXpos;
-                        currentY = myYpos + i;
-                        currentDirectionLength = CreateCubes.numOfCubesY;
-                        shipPos = myYpos;
-                        break;
-                    //create Y- direction
-                    case 1:
-                        currentX = myXpos;
-                        currentY = myYpos - i;
-                        currentDirectionLength = CreateCubes.numOfCubesY;
-                        shipPos = myYpos;
-                        break;
-
-                    //create X+ direction
-                    case 2:
-                        currentX = myXpos + i;
-                        currentY = myYpos;
-                        currentDirectionLength = CreateCubes.numOfCubesX;
-                        shipPos = myXpos;
-                        break;
-
-                    //create X- direction
-                    case 3:
-                        currentX = myXpos - i;
-                        currentY = myYpos;
-                        currentDirectionLength = CreateCubes.numOfCubesX;
-                        shipPos = myXpos;
-                        break;
-
+                    coloringDirection = setDirection;
                 }
+                else
+                {
+                    coloringDirection = a;
+                }
+                //Debug.Log("Case: " + a);
+                setCurrentDirection(coloringDirection, myXpos, myYpos, i);
 
-                //Debug.Log("shipPos: " + shipPos + " shipLength: " + shipLength + " currentDirectionLength: " + currentDirectionLength + " i: " + i);
-                //
-                //check if it fits the grid
-                if (isAvailable && (badDirection != a) && 
-                    (((shipPos + shipLength <= currentDirectionLength) && (currentY > myYpos || currentX > myXpos)) || 
+
+                //checks if the current cube fits the grid
+
+                //Since this if asks for quiet a lot, let me break it down!
+                //The overview of this if statement is:
+                //IF(A && B && (C || D))
+                //A asks if the cube the mouse is currently hovering over is available
+                //B asks if any other cubes in the same direction as the current cube are already taken
+                //C has several components: (C1 && (C2 || C3))
+                //C1 asks if the cube we want to color is even within the length of the ship we want to place, in a POSITIVE direction
+                //C2 asks if the Y position of the block we want to color is higher than the block we are hovering over
+                //C3 asks if the X position of the block we want to color is higher than the block we are hovering over
+                //I check for C2 or C3 because C1 would always be true if we go in the negative direction
+                //D is exactly like C, but in the negative direction
+
+                if (isAvailable && (!badDirections.Contains(a)) &&
+                    (((shipPos + shipLength <= currentDirectionLength) && (currentY > myYpos || currentX > myXpos)) ||
                     ((shipPos - shipLength > -2) && (currentY < myYpos || currentX < myXpos))))
                 {
-                    
 
-                    //check if cubes in the current direction are available 
+
+                    //check if the cube we currently want to color is available / not taken by another ship 
+                    //this is done by accessing the cubeSet array stored on the gameObject called GameController
+                    //I ask for a specific position within the array of all cubes (i saved them into that array, when they were created)
+                    //and then I access the script onMouse on the cube we want to color, to check the variable isAvailable (which is false if the cube is already taken by another ship)
+                    //ps: a gameObject is the common class for all things that can be placed in the editor/3D world of unity
+
                     //Debug.Log("checking Cube " + currentX + ":" + currentY);
                     if (GameObject.Find("GameController").GetComponent<CreateCubes>().cubeSet[currentX, currentY].GetComponent<OnMouse>().isAvailable)
                     {
@@ -191,17 +295,21 @@ public class OnMouse : MonoBehaviour
                     }
                     else
                     {
-                        //HIER STiMMT WAS NICHT!!!!!
-                        //HIER STiMMT WAS NICHT!!!!!
-                        //HIER STiMMT WAS NICHT!!!!!
+                        //if the cube is not available, add it to the list of bad direction, in which a ship can not be placed
                         //Debug.Log("X:" + currentX + " Y:" + currentY + " shiplength: " + shipLength);
-                        currentDirAvailable = false;
-                        badDirection = a;
 
-                        //resetting the whole loop
+                        if (!badDirections.Contains(a))
+                        {
+                            badDirections.Add(a);
+
+                            Debug.Log(a + " direction is already taken!");
+                        }
+
+                        //resetting the whole loop (next time this direction will be skipped and instead made red)
                         a = 0;
                         i = 0;
-                        
+
+
                     }
                 }
                 else
@@ -211,26 +319,34 @@ public class OnMouse : MonoBehaviour
 
 
                     //check if the individual block still fits on the grid
-                    if (((shipPos + i < currentDirectionLength) && ((currentY > myYpos || currentX > myXpos)) || 
+                    //same check as explained above, just a bit simpler
+                    if (((shipPos + i < currentDirectionLength) && ((currentY > myYpos || currentX > myXpos)) ||
                         (shipPos - i > -1) && (currentY < myYpos || currentX < myXpos)))
                     {
-                        //Debug.Log(shipPos + " i: " + i + " < " + currentDirectionLength);
-                        //Debug.Log(shipPos + " i: " + -i + " >" + -1);
-
                         GameObject.Find("GameController").GetComponent<CreateCubes>().cubeSet[currentX, currentY].GetComponent<Renderer>().material.color = Color.Lerp(defaultColor, nopeCol, 100f);
+
+                        //I also add bad directions here, since I want to include directions that go over the edge of the map
+                        if (!badDirections.Contains(a))
+                        {
+                            badDirections.Add(a);
+
+                            Debug.Log(a + " direction is already taken!");
+                        }
                     }
                 }
-
-
             }
-
-
-
-
-            //GameObject.Find("GameController").GetComponent<CreateCubes>().cubeSet[myXpos, myYpos - i].GetComponent<Renderer>().material.color = Color.Lerp(defaultColor, hoverCol, 100f);
-            //GameObject.Find("GameController").GetComponent<CreateCubes>().cubeSet[myXpos + i, myYpos].GetComponent<Renderer>().material.color = Color.Lerp(defaultColor, hoverCol, 100f);
-            //GameObject.Find("GameController").GetComponent<CreateCubes>().cubeSet[myXpos - i, myYpos].GetComponent<Renderer>().material.color = Color.Lerp(defaultColor, hoverCol, 100f);
         }
+
+        //Debug.Log(badDirections.Count);
+        if (isAvailable && badDirections.Count < 4) //this makes sure, if all 4 directions are unavailable, the block we hover over is also unavailable
+        {
+            gameObject.GetComponent<Renderer>().material.color = hoverCol;
+        }
+        else
+        {
+            gameObject.GetComponent<Renderer>().material.color = nopeCol;
+        }
+
 
 
     }
