@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11486472}
   - 114: {fileID: 11404700}
   - 114: {fileID: 11410260}
+  - 114: {fileID: 11496842}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -90,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabIslandSand: {fileID: 152362, guid: 78858f8de032c074ab64776062a0b22f, type: 2}
-  prefabIslandDirt: {fileID: 152362, guid: 28f5029664303bc4fb4633ad19b5cadd, type: 2}
+  prefabIslandDirt: {fileID: 152362, guid: cd7105e9f3ddf2544b2124e60a174c8e, type: 2}
   prefabIslandStone: {fileID: 152362, guid: a6ad8c8d399a42d4392584c3a8f4d93c, type: 2}
   prefabIslandGrass: {fileID: 152362, guid: 4cfb4bc8200d343489dfe482791dac71, type: 2}
   bunkerList: []
@@ -113,13 +114,26 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141516}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95052f9e0e83d3f4d80caa507f49570c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabCube: {fileID: 152146, guid: 73ef755fbd324a94da93dc18b47f8b5e, type: 2}
   shipLength: 1
+--- !u!114 &11496842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f5ce98085ea86f498340ea8a5dc41e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabGameCube: {fileID: 152146, guid: ff58ec0a4086aed4ca1292b65ba30543, type: 2}
+  shipList: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -22794,10 +22794,6 @@ Prefab:
       propertyPath: cam2
       value: 
       objectReference: {fileID: 2041190561}
-    - target: {fileID: 11404700, guid: 7278ac36ea7338042a7d96604f6d7797, type: 2}
-      propertyPath: prefabIslandDirt
-      value: 
-      objectReference: {fileID: 152362, guid: cd7105e9f3ddf2544b2124e60a174c8e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7278ac36ea7338042a7d96604f6d7797, type: 2}
   m_IsPrefabParent: 0
@@ -40549,7 +40545,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 488506, guid: 067fca377e22f424e98f0c6a969d16da, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 067fca377e22f424e98f0c6a969d16da, type: 2}
