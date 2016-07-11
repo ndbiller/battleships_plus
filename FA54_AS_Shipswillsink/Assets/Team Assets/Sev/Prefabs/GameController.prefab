@@ -11,9 +11,7 @@ GameObject:
   - 33: {fileID: 3363352}
   - 65: {fileID: 6598528}
   - 23: {fileID: 2351606}
-  - 114: {fileID: 11486472}
-  - 114: {fileID: 11404700}
-  - 114: {fileID: 11410260}
+  - 114: {fileID: 11499496}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -78,36 +76,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11404700
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4021371fafebc1b4baaf524828b5c125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabIslandSand: {fileID: 152362, guid: 78858f8de032c074ab64776062a0b22f, type: 2}
-  prefabIslandDirt: {fileID: 152362, guid: 28f5029664303bc4fb4633ad19b5cadd, type: 2}
-  prefabIslandStone: {fileID: 152362, guid: a6ad8c8d399a42d4392584c3a8f4d93c, type: 2}
-  prefabIslandGrass: {fileID: 152362, guid: 4cfb4bc8200d343489dfe482791dac71, type: 2}
-  bunkerList: []
---- !u!114 &11410260
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80ae8cd7dc3a0540b64c6000129dc62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam1: {fileID: 0}
-  cam2: {fileID: 0}
---- !u!114 &11486472
+--- !u!114 &11499496
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -119,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabCube: {fileID: 152146, guid: 73ef755fbd324a94da93dc18b47f8b5e, type: 2}
-  shipLength: 1
+  shipLength: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -1,10 +1,12 @@
 fileFormatVersion: 2
 guid: e80ae8cd7dc3a0540b64c6000129dc62
-timeCreated: 1468172766
+timeCreated: 1468208757
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cam1: {fileID: 2055110, guid: 93e5f8fb599e07e42b4974bc9833d169, type: 2}
+  - cam2: {fileID: 2045820, guid: dbbd3d47430be1144af1cde67e453d42, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

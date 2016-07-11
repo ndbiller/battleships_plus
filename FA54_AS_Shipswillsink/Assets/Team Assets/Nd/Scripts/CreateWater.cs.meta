@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3f5ce98085ea86f498340ea8a5dc41e7
+timeCreated: 1468208726
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - prefabGameCube: {fileID: 152146, guid: ff58ec0a4086aed4ca1292b65ba30543, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
