@@ -1,3 +1,5 @@
+FA54_AS_Shipswillsink/Library/
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -29,5 +31,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-#zu groﬂ
-player_win_x86.pdb
+#Player Win Debug Database
+*.pdb

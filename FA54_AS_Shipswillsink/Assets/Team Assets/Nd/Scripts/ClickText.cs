@@ -6,12 +6,14 @@ public class ClickText : MonoBehaviour {
 	public string originalText;
 	bool option1Clicked = false;
 	bool option2Clicked = false;
+	bool option3Clicked = false;
 	public Color originalColor;
 	public Color hoverColor;
 	public Color selectedColor;
 	public GameObject title;
 	public GameObject option1;
 	public GameObject option2;
+	public GameObject option3;
 
 	void OnMouseEnter () {
 		GetComponent<Transform> ().localScale = new Vector3 (1.2f,1.2f,1);
@@ -32,7 +34,12 @@ public class ClickText : MonoBehaviour {
 			option1Clicked = true;
 			//GetComponent<TextMesh> ().color = selectedColor;
 			originalColor = hoverColor;
+			GameObject.Find ("GameStartText").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption1").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption2").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption3").GetComponent<StartWaver> ().enabled = false;
 			StartCoroutine(WaitForSomeTime(5));
+			//GameObject.Find ("GameStartText").GetComponent<FadeSound> ().FadeOut ();  //SoundFadeOut ();
 		}
 		if (this.name == "GameStartOption2") {
 			//GetComponent<TextMesh> ().color = selectedColor;
@@ -41,10 +48,30 @@ public class ClickText : MonoBehaviour {
 			originalColor = hoverColor;
 			GetComponent<TextMesh> ().text = "Not yet fully implemented.";
 			option2Clicked = true;
+			GameObject.Find ("GameStartText").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption1").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption2").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption3").GetComponent<StartWaver> ().enabled = false;
 			StartCoroutine(WaitForSomeTime(5));
+			//this.GetComponent<FadeSound> ().FadeOut ();  //SoundFadeOut ();
+		}
+		if (this.name == "GameStartOption3") {
+			//GetComponent<TextMesh> ().color = selectedColor;
+			//print("Not yet fully implemented.");
+			//originalText = GetComponent<TextMesh> ().text;
+			originalColor = hoverColor;
+			option3Clicked = true;
+			GameObject.Find ("GameStartText").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption1").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption2").GetComponent<StartWaver> ().enabled = false;
+			GameObject.Find ("GameStartOption3").GetComponent<StartWaver> ().enabled = false;
+			SceneManager.LoadScene ("GameHelp");
+			//StartCoroutine(WaitForSomeTime(5));
+			//this.GetComponent<FadeSound> ().FadeOut ();  //SoundFadeOut ();
 		}
 		option1.GetComponent<BoxCollider> ().enabled = false;
 		option2.GetComponent<BoxCollider> ().enabled = false;
+		option3.GetComponent<BoxCollider> ().enabled = false;
 		GetComponent<Transform> ().localScale = new Vector3 (1,1,1);
 	}
 
@@ -61,11 +88,13 @@ public class ClickText : MonoBehaviour {
 			MoveText(title, 3.5f, 1);
 			MoveText (option1, 2.5f);
 			MoveText (option2, 3f, 1);
+			MoveText (option3, 4.2f);
 		}
 		if(option2Clicked){
 			MoveText(title, 3.5f);
 			MoveText (option1, 2.5f, 1);
 			MoveText (option2, 3f);
+			MoveText (option3, 4.2f, 1);
 		}
 	}
 
@@ -81,5 +110,7 @@ public class ClickText : MonoBehaviour {
 			SceneManager.LoadScene ("ShipsWillSink_02");
 		if (option2Clicked)
 			SceneManager.LoadScene ("ShipsWillSink_03");
+//		if (option3Clicked)
+//			SceneManager.LoadScene ("GameHelp");
 	}
 }

@@ -24,9 +24,11 @@ public class CubePosition : MonoBehaviour {
 	public Color hitColor;
 
 	public List<Bunker> list;
+	public GameObject[,] grid;
 
 	void Start(){
 		prefabSmoke.GetComponent<ParticleSystem> ().Stop();
+		grid = GameObject.Find ("GameControllerNd").GetComponent<CreateIslands> ().tileSet;
 	}
 
 	void OnMouseEnter()
@@ -64,9 +66,12 @@ public class CubePosition : MonoBehaviour {
 					Debug.Log ("name: " + list [index].name);
 					Debug.Log ("length: " + list [index].length);
 					list [index].hitpoints = list [index].hitpoints - 1;
+					prefabSmoke.GetComponent<ParticleSystem> ().Play();
 					Debug.Log ("hitpoints: " + list [index].hitpoints);
 					if (list [index].hitpoints == 0) {
 						list [index].destroyed = true;
+						//show that ship/bunker is destroyed
+						ShowDestruction(index);
 						list.RemoveAt (index);
 					}
 					if (list.Count == 0) {
@@ -74,7 +79,27 @@ public class CubePosition : MonoBehaviour {
 					}
 				}
 				hasBeenShotAt = true;
-				GameObject.Find ("GameControllerNd").GetComponent<GameStates> ().ChangeTurn ();
+				//Invoke("Switch", 1f);
+				Switch();
+			}
+		}
+	}
+
+	void Switch(){
+		GameObject.Find ("GameControllerNd").GetComponent<GameStates> ().ChangeTurn ();
+	}
+
+	public void ShowDestruction(int index){
+		print ("Show Destruction:");
+		print ("list[index]: " + list[index].name+","+list[index].x +","+list[index].y+","+list[index].horizontal+","+list[index].length);
+		//grid = GameObject.Find ("GameControllerNd").GetComponent<CreateIslands> ().tileSet;
+		for (int i = 0; i <= list [index].length; i++) {
+			if (list [index].horizontal) {
+				grid [list [index].x + i, list [index].y].GetComponentInChildren<Transform> ().FindChild ("CubeBunker").localPosition = new Vector3 (0f, 0.42f, 0f);
+				grid [list [index].x + i, list [index].y].GetComponentInChildren<Transform> ().FindChild ("ParticleSystemSmoke").GetComponent<ParticleSystem> ().Stop ();
+			} else {
+				grid [list [index].x, list [index].y + i].GetComponentInChildren<Transform> ().FindChild ("CubeBunker").localPosition = new Vector3 (0f, 0.42f, 0f);
+				grid [list [index].x, list [index].y + i].GetComponentInChildren<Transform> ().FindChild ("ParticleSystemSmoke").GetComponent<ParticleSystem> ().Stop ();
 			}
 		}
 	}
@@ -95,7 +120,6 @@ public class CubePosition : MonoBehaviour {
 		if (shotFired) {
 			if (bunkerPosition && hasBeenShotAt) {
 				prefabBunker.GetComponent<MeshRenderer> ().enabled = true;
-				prefabSmoke.GetComponent<ParticleSystem> ().Play();
 				//defaultColor = hitColor;
 			} else {
 				//prefabBunker.GetComponent<MeshRenderer> ().enabled = false;

@@ -12,6 +12,7 @@ GameObject:
   - 102: {fileID: 10255268}
   - 65: {fileID: 6589918}
   - 114: {fileID: 11414272}
+  - 114: {fileID: 11433170}
   m_Layer: 0
   m_Name: GameStartOption2
   m_TagString: Untagged
@@ -67,8 +68,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 21.575924, y: 6.206814, z: 0}
-  m_Center: {x: 0.059898376, y: 0.23939133, z: 0}
+  m_Size: {x: 19.471046, y: 6.4160233, z: 0}
+  m_Center: {x: -0.013628006, y: 0.27143288, z: 0}
 --- !u!102 &10255268
 TextMesh:
   serializedVersion: 3
@@ -110,6 +111,25 @@ MonoBehaviour:
   title: {fileID: 0}
   option1: {fileID: 0}
   option2: {fileID: 141262}
+  option3: {fileID: 0}
+--- !u!114 &11433170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9689c26bda3c8764c93fdbfc999e6f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveHeight: 1.1
+  waveSpeedHeight: 0.23
+  waveSpeedY: 0.069
+  waveDirectionY: 2.3
+  waveSpeedX: 0.11
+  waveDirectionX: 2.3
+  waveWaitSpeed: 0.11
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

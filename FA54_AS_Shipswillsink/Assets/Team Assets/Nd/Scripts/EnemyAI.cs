@@ -3,6 +3,10 @@ using System.Collections;
 
 public class EnemyAI : MonoBehaviour {
 	public GameObject[,] grid;
+	public bool targeting = false;
+	public bool targetSelected = false;
+	public int targetX;
+	public int targetY;
 
 	// Use this for initialization
 	void Start () {
@@ -30,14 +34,25 @@ public class EnemyAI : MonoBehaviour {
 				targetValid = true;
 			}
 		}
+		targetX = posX;
+		targetY = posY;
+		MarkTarget();
 		//shoot
-		print("Ka-Boom!");
-		WaitForSomeTimeAndShot(3, posX, posY);
-		Shoot(posX, posY);
+		Invoke("Shoot", 1.5f);
 	}
 
-	void Shoot(int posX, int posY){
-		grid [posX, posY].GetComponent<WaterPosition> ().ShootAtField ();
+
+
+	public void MarkTarget(){
+		grid [targetX, targetY].GetComponent<WaterPosition> ().MarkMe ();
+	}
+
+	void Shoot(){
+//		char split = ',';
+//		string[] positions = x_and_y.Split (split);
+//		int posX = int.Parse (positions [0]);
+//		int posY = int.Parse (positions [1]);
+		grid [targetX, targetY].GetComponent<WaterPosition> ().ShootAtField ();
 	}
 
 	IEnumerator WaitForSomeTimeAndShot(int time, int posX, int posY) {
@@ -46,6 +61,6 @@ public class EnemyAI : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 		//print(Time.time);
 		print("shooting...");
-		Shoot(posX, posY);
+		//Shoot(posX, posY);
 	}
 }
