@@ -79,7 +79,7 @@ TextMesh:
   m_GameObject: {fileID: 119484}
   m_Text: 'Start
 
-    (automatic placement)'
+    ( automatic placement )'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -129,6 +129,7 @@ MonoBehaviour:
   title: {fileID: 0}
   option1: {fileID: 119484}
   option2: {fileID: 0}
+  option3: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

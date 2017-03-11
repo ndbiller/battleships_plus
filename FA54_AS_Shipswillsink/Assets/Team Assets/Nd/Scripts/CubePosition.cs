@@ -91,9 +91,9 @@ public class CubePosition : MonoBehaviour {
 
 	public void ShowDestruction(int index){
 		print ("Show Destruction:");
-		print ("list[index]: " + list[index].name+","+list[index].x +","+list[index].y+","+list[index].horizontal+","+list[index].length);
+		print ("list[" + index + "].name:" + list[index].name + ", .x:" + list[index].x + ", .y:" + list[index].y + " , .horizontal:" + list[index].horizontal + ", .length:" + list[index].length);
 		//grid = GameObject.Find ("GameControllerNd").GetComponent<CreateIslands> ().tileSet;
-		for (int i = 0; i <= list [index].length; i++) {
+		for (int i = 0; i < list [index].length; i++) {
 			if (list [index].horizontal) {
 				grid [list [index].x + i, list [index].y].GetComponentInChildren<Transform> ().FindChild ("CubeBunker").localPosition = new Vector3 (0f, 0.42f, 0f);
 				grid [list [index].x + i, list [index].y].GetComponentInChildren<Transform> ().FindChild ("ParticleSystemSmoke").GetComponent<ParticleSystem> ().Stop ();
@@ -128,5 +128,4 @@ public class CubePosition : MonoBehaviour {
 			shotFired = false;
 		}
 	}
-
 }

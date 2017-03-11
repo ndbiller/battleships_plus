@@ -77,50 +77,32 @@ public class CreateIslands : MonoBehaviour {
 		//Create the Bunkers
 		//Structs der Bunker (1 x HQ, 2 x Airfield, 3 x Base, 4 x Outpost)
 		//HQ
-		Bunker bunker_01 = new Bunker("HQ", 5, true, 0, 0, false);
-		bunker_01 = CreateBunker (tileSet, bunker_01);
-		//Debug.Log ("bunker_01.x=" + bunker_01.x + ", bunker_01.y=" + bunker_01.y);
-		bunkerList.Add (bunker_01);
-		//Airfields
-		Bunker bunker_02 = new Bunker("Airfield_01", 4, true, 0, 0, false);
-		bunker_02 = CreateBunker (tileSet, bunker_02);
-		//Debug.Log ("bunker_02.x=" + bunker_02.x + ", bunker_02.y=" + bunker_02.y);
-		bunkerList.Add (bunker_02);
-		Bunker bunker_03 = new Bunker("Airfield_02", 4, true, 0, 0, false);
-		bunker_03 = CreateBunker (tileSet, bunker_03);
-		//Debug.Log ("bunker_03.x=" + bunker_03.x + ", bunker_03.y=" + bunker_03.y);
-		bunkerList.Add (bunker_03);
-		//Bases
-		Bunker bunker_04 = new Bunker("Base_01", 3, true, 0, 0, false);
-		bunker_04 = CreateBunker (tileSet, bunker_04);
-		//Debug.Log ("bunker_04.x=" + bunker_04.x + ", bunker_04.y=" + bunker_04.y);
-		bunkerList.Add (bunker_04);
-		Bunker bunker_05 = new Bunker("Base_02", 3, true, 0, 0, false);
-		bunker_05 = CreateBunker (tileSet, bunker_05);
-		//Debug.Log ("bunker_05.x=" + bunker_05.x + ", bunker_05.y=" + bunker_05.y);
-		bunkerList.Add (bunker_05);
-		Bunker bunker_06 = new Bunker("Base_03", 3, true, 0, 0, false);
-		bunker_06 = CreateBunker (tileSet, bunker_06);
-		//Debug.Log ("bunker_06.x=" + bunker_06.x + ", bunker_06.y=" + bunker_06.y);
-		bunkerList.Add (bunker_06);
-		//Outposts
-		Bunker bunker_07 = new Bunker("Outpost_01", 2, true, 0, 0, false);
-		bunker_07 = CreateBunker (tileSet, bunker_07);
-		//Debug.Log ("bunker_07.x=" + bunker_07.x + ", bunker_07.y=" + bunker_07.y);
-		bunkerList.Add (bunker_07);
-		Bunker bunker_08 = new Bunker("Outpost_02", 2, true, 0, 0, false);
-		bunker_08 = CreateBunker (tileSet, bunker_08);
-		//Debug.Log ("bunker_08.x=" + bunker_08.x + ", bunker_08.y=" + bunker_08.y);
-		bunkerList.Add (bunker_08);
-		Bunker bunker_09 = new Bunker("Outpost_03", 2, true, 0, 0, false);
-		bunker_09 = CreateBunker (tileSet, bunker_09);
-		//Debug.Log ("bunker_09.x=" + bunker_09.x + ", bunker_09.y=" + bunker_09.y);
-		bunkerList.Add (bunker_09);
-		Bunker bunker_10 = new Bunker("Outpost_04", 2, true, 0, 0, false);
-		bunker_10 = CreateBunker (tileSet, bunker_10);
-		//Debug.Log ("bunker_10.x=" + bunker_10.x + ", bunker_10.y=" + bunker_10.y);
-		bunkerList.Add (bunker_10);
+		Bunker bunker_01 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_01, "HQ", 5, tileSet, bunkerList);
 
+		//Airfields
+		Bunker bunker_02 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_02, "Airfield_01", 4, tileSet, bunkerList);
+		Bunker bunker_03 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_03, "Airfield_02", 4, tileSet, bunkerList);
+
+		//Bases
+		Bunker bunker_04 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_04, "Base_01", 3, tileSet, bunkerList);
+		Bunker bunker_05 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_05, "Base_02", 3, tileSet, bunkerList);
+		Bunker bunker_06 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_06, "Base_03", 3, tileSet, bunkerList);
+
+		//Outposts
+		Bunker bunker_07 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_07, "Outpost_01", 2, tileSet, bunkerList);
+		Bunker bunker_08 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_08, "Outpost_02", 2, tileSet, bunkerList);
+		Bunker bunker_09 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_09, "Outpost_03", 2, tileSet, bunkerList);
+		Bunker bunker_10 = ScriptableObject.CreateInstance<Bunker>();
+		CreateAndAddBunker(bunker_10, "Outpost_04", 2, tileSet, bunkerList);
 	}
 	
 	// Update is called once per frame
@@ -129,6 +111,15 @@ public class CreateIslands : MonoBehaviour {
 	}
 
 	//Methods
+	static void CreateAndAddBunker(Bunker bunker, string name, int length, GameObject[,] tileSet, List<Bunker> bunkerList)
+	{
+		bunker.name = name;
+		bunker.length = length;
+		bunker.hitpoints = length;
+		bunker = CreateBunker (tileSet, bunker);
+		bunkerList.Add (bunker);
+	}
+
 	static Bunker CreateBunker(GameObject[,] tileSet, Bunker bunker)
 	{
 		//method sets the bool bunkerPosition of the gameobject at that position in the array tileset to true
@@ -286,8 +277,6 @@ public class CreateIslands : MonoBehaviour {
 				}
 			}
 		}
-
 		return bunker;
 	}
-
 }

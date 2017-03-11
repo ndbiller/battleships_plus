@@ -10,7 +10,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: oszimt FA54
-  productName: Shipswillsink
+  productName: ships_will_sink_1.1
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -173,7 +173,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
+      m_Icon: {fileID: 2800000, guid: 49b611e658efbf443b686a4036f74fe3, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []

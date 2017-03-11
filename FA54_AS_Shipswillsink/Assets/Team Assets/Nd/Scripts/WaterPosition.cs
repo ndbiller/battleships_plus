@@ -97,7 +97,7 @@ public class WaterPosition : MonoBehaviour {
 		print ("Show Destruction:");
 		print ("list[index]: " + list[index].name+","+list[index].x +","+list[index].y+","+list[index].horizontal+","+list[index].length);
 		//grid = GameObject.Find ("GameControllerNd").GetComponent<CreateIslands> ().tileSet;
-		for (int i = 0; i <= list [index].length; i++) {
+		for (int i = 0; i < list [index].length; i++) {
 			if (list [index].horizontal) {
 				grid [list [index].x + i, list [index].y].GetComponentInChildren<Transform> ().FindChild ("CubeShip").localPosition = new Vector3 (0f, 0.42f, 0f);
 				grid [list [index].x + i, list [index].y].GetComponentInChildren<Transform> ().FindChild ("ParticleSystemSmoke").GetComponent<ParticleSystem> ().Stop ();
