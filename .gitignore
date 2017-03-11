@@ -32,4 +32,4 @@ sysinfo.txt
 *.unitypackage
 
 #Player Win Debug Database
-*.pdb
+#*.pdb
