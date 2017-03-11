@@ -32,43 +32,82 @@ public class CreateWater : MonoBehaviour {
 		}
 
 		//Create the Ships
-		Ship ship_01 = new Ship("Battleship", 5, true, 0, 0, false);
+		Ship ship_01 = ScriptableObject.CreateInstance<Ship>();
+		ship_01.name = "Battleship";
+		ship_01.length = 5;
+		ship_01.hitpoints = 5;
 		ship_01 = CreateShip (grid, ship_01);
 		Debug.Log ("ship_01.x=" + ship_01.x + ", ship_01.y=" + ship_01.y);
 		shipList.Add (ship_01);
-		Ship ship_02 = new Ship("Cruiser_01", 4, true, 0, 0, false);
+
+		Ship ship_02 = ScriptableObject.CreateInstance<Ship>();
+		ship_02.name = "Cruiser_01";
+		ship_02.length = 4;
+		ship_02.hitpoints = 4;
 		ship_02 = CreateShip (grid, ship_02);
 		Debug.Log ("ship_02.x=" + ship_02.x + ", ship_02.y=" + ship_02.y);
 		shipList.Add (ship_02);
-		Ship ship_03 = new Ship("Cruiser_02", 4, true, 0, 0, false);
+
+		Ship ship_03 = ScriptableObject.CreateInstance<Ship>();
+		ship_03.name = "Cruiser_02";
+		ship_03.length = 4;
+		ship_03.hitpoints = 4;
 		ship_03 = CreateShip (grid, ship_03);
 		Debug.Log ("ship_03.x=" + ship_03.x + ", ship_03.y=" + ship_03.y);
 		shipList.Add (ship_03);
-		Ship ship_04 = new Ship("Destroyer_01", 3, true, 0, 0, false);
+
+		Ship ship_04 = ScriptableObject.CreateInstance<Ship>();
+		ship_04.name = "Destroyer_01";
+		ship_04.length = 3;
+		ship_04.hitpoints = 3;
 		ship_04 = CreateShip (grid, ship_04);
 		Debug.Log ("ship_04.x=" + ship_04.x + ", ship_04.y=" + ship_04.y);
 		shipList.Add (ship_04);
-		Ship ship_05 = new Ship("Destroyer_02", 3, true, 0, 0, false);
+
+		Ship ship_05 = ScriptableObject.CreateInstance<Ship>();
+		ship_05.name = "Destroyer_02";
+		ship_05.length = 3;
+		ship_05.hitpoints = 3;
 		ship_05 = CreateShip (grid, ship_05);
 		Debug.Log ("ship_05.x=" + ship_05.x + ", ship_05.y=" + ship_05.y);
 		shipList.Add (ship_05);
-		Ship ship_06 = new Ship("Destroyer_03", 3, true, 0, 0, false);
+
+		Ship ship_06 = ScriptableObject.CreateInstance<Ship>();
+		ship_06.name = "Destroyer_03";
+		ship_06.length = 3;
+		ship_06.hitpoints = 3;
 		ship_06 = CreateShip (grid, ship_06);
 		Debug.Log ("ship_06.x=" + ship_06.x + ", ship_06.y=" + ship_06.y);
 		shipList.Add (ship_06);
-		Ship ship_07 = new Ship("Submarine_01", 2, true, 0, 0, false);
+
+		Ship ship_07 = ScriptableObject.CreateInstance<Ship>();
+		ship_07.name = "Submarine_01";
+		ship_07.length = 2;
+		ship_07.hitpoints = 2;
 		ship_07 = CreateShip (grid, ship_07);
 		Debug.Log ("ship_07.x=" + ship_07.x + ", ship_07.y=" + ship_07.y);
 		shipList.Add (ship_07);
-		Ship ship_08 = new Ship("Submarine_02", 2, true, 0, 0, false);
+
+		Ship ship_08 = ScriptableObject.CreateInstance<Ship>();
+		ship_08.name = "Submarine_02";
+		ship_08.length = 2;
+		ship_08.hitpoints = 2;
 		ship_08 = CreateShip (grid, ship_08);
 		Debug.Log ("ship_08.x=" + ship_08.x + ", ship_08.y=" + ship_08.y);
 		shipList.Add (ship_08);
-		Ship ship_09 = new Ship("Submarine_03", 2, true, 0, 0, false);
+
+		Ship ship_09 = ScriptableObject.CreateInstance<Ship>();
+		ship_09.name = "Submarine_03";
+		ship_09.length = 2;
+		ship_09.hitpoints = 2;
 		ship_09 = CreateShip (grid, ship_09);
 		Debug.Log ("ship_09.x=" + ship_09.x + ", ship_09.y=" + ship_09.y);
 		shipList.Add (ship_09);
-		Ship ship_10 = new Ship("Submarine_04", 2, true, 0, 0, false);
+
+		Ship ship_10 = ScriptableObject.CreateInstance<Ship>();
+		ship_10.name = "Submarine_04";
+		ship_10.length = 2;
+		ship_10.hitpoints = 2;
 		ship_10 = CreateShip (grid, ship_10);
 		Debug.Log ("ship_10.x=" + ship_10.x + ", ship_10.y=" + ship_10.y);
 		shipList.Add (ship_10);
