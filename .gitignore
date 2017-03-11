@@ -1,3 +1,5 @@
+FA54_AS_Shipswillsink/Library/
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -28,3 +30,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+#Player Win Debug Database
+#*.pdb

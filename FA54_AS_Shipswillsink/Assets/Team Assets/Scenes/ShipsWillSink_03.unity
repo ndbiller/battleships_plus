@@ -12465,25 +12465,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66d7b9ffefc3d6f48b4102eb4ffa0415, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &524974059 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 141516, guid: 7278ac36ea7338042a7d96604f6d7797, type: 2}
-  m_PrefabInternal: {fileID: 937576102}
---- !u!114 &524974060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 524974059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e348d9b2f678524694c472e704a573b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  globalFirstClick: 0
-  theChosenOne: {fileID: 0}
-  currentlyHovered: {fileID: 0}
-  lastHovered: {fileID: 0}
 --- !u!4 &525964746 stripped
 Transform:
   m_PrefabParentObject: {fileID: 411496, guid: 66d7b9ffefc3d6f48b4102eb4ffa0415, type: 2}
@@ -22187,14 +22168,6 @@ Prefab:
     - target: {fileID: 411982, guid: 7278ac36ea7338042a7d96604f6d7797, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11499496, guid: 7278ac36ea7338042a7d96604f6d7797, type: 2}
-      propertyPath: shipLength
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2351606, guid: 7278ac36ea7338042a7d96604f6d7797, type: 2}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7278ac36ea7338042a7d96604f6d7797, type: 2}

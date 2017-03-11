@@ -18,5 +18,14 @@ public class SwitchCamera : MonoBehaviour {
 			cam1.enabled = !cam1.enabled;
 			cam2.enabled = !cam2.enabled;
 		}
+		if (Input.GetKeyUp (KeyCode.C)) {
+			cam1.enabled = !cam1.enabled;
+			cam2.enabled = !cam2.enabled;
+		}
+	}
+
+	public void ChangeCamera(){
+		cam1.enabled = !cam1.enabled;
+		cam2.enabled = !cam2.enabled;
 	}
 }

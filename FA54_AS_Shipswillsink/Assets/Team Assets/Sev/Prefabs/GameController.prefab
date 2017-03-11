@@ -12,6 +12,8 @@ GameObject:
   - 65: {fileID: 6598528}
   - 23: {fileID: 2351606}
   - 114: {fileID: 11499496}
+  - 114: {fileID: 11465146}
+  - 114: {fileID: 11429014}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.29, y: 6.62, z: -9.84}
+  m_LocalPosition: {x: 0, y: 3.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,10 +74,36 @@ BoxCollider:
   m_GameObject: {fileID: 141516}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11429014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649b31b2ff42b314e94c20e5c8a96787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11465146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e348d9b2f678524694c472e704a573b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalFirstClick: 0
+  theChosenOne: {fileID: 0}
+  currentlyHovered: {fileID: 0}
+  lastHovered: {fileID: 0}
 --- !u!114 &11499496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabCube: {fileID: 152146, guid: 73ef755fbd324a94da93dc18b47f8b5e, type: 2}
-  shipLength: 3
+  shipLength: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
